@@ -327,7 +327,6 @@ GameObject:
   - component: {fileID: 459090746}
   - component: {fileID: 459090745}
   - component: {fileID: 459090744}
-  - component: {fileID: 459090743}
   m_Layer: 5
   m_Name: Volume Button
   m_TagString: Untagged
@@ -354,22 +353,6 @@ RectTransform:
   m_AnchoredPosition: {x: -64, y: -64}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &459090743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 459090741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d29fff08cae36304c936ada20517b7dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ButtonStates:
-  - {fileID: -8864459858760515969, guid: 73ffbc864fc2d91439b1c6b897f4fee2, type: 3}
-  - {fileID: -2354599989249271683, guid: 73ffbc864fc2d91439b1c6b897f4fee2, type: 3}
-  controller: {fileID: 1952229579}
 --- !u!114 &459090744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,7 +396,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 459090743}
+      - m_Target: {fileID: 1952229579}
         m_MethodName: ToggleVolume
         m_Mode: 1
         m_Arguments:
@@ -1889,6 +1872,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db3e06023de212429b3d3567f99a051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 459090744}
+  ButtonStates:
+  - {fileID: -8864459858760515969, guid: 73ffbc864fc2d91439b1c6b897f4fee2, type: 3}
+  - {fileID: -2354599989249271683, guid: 73ffbc864fc2d91439b1c6b897f4fee2, type: 3}
   BGMList:
   - {fileID: 8300000, guid: 475f4837af487ce4a9e68bb227455e4c, type: 3}
   - {fileID: 8300000, guid: 90eae78e8ce85a849b5b0ca11b2de641, type: 3}
