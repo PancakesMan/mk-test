@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 731607735400405269}
   - component: {fileID: 1469917674133386654}
   - component: {fileID: 8565539533967581579}
+  - component: {fileID: 7966208637502664975}
   m_Layer: 0
   m_Name: Coin
-  m_TagString: Coin
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,3 +128,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
+--- !u!114 &7966208637502664975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412061808883555225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf1b1ec30927bb4c99b43b4621e3f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: 10
+  CollectSound: {fileID: 8300000, guid: 6a8c60075137cfd4399c724d469adb9f, type: 3}

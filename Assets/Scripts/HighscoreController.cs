@@ -10,6 +10,6 @@ public class HighscoreController : MonoBehaviour
     void Awake()
     {
         highscore = GetComponent<Text>();
-        highscore.text = "High Score: " + PlayerPrefs.GetString("Highscore", "0");
+        highscore.text = "High Score: " + PlayerPrefs.GetInt("Highscore", 0);
     }
 }

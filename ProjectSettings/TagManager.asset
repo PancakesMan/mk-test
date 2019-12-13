@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Water
-  - Coin
+  - Collectable
+  - Platform
   layers:
   - Default
   - TransparentFX

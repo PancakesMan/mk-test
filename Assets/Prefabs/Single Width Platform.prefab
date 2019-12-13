@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 3076680343526053244}
   - component: {fileID: 5315727034576597838}
   - component: {fileID: 2854546381060441896}
+  - component: {fileID: 1495229049925529840}
+  - component: {fileID: 4314368026092078017}
   m_Layer: 0
   m_Name: Single Width Platform
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,6 +128,41 @@ MonoBehaviour:
   CoinSpawnPoints:
   - {fileID: 6914861050724598298}
   CoinSpawnChance: 0.5
+--- !u!50 &1495229049925529840
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3022813375737257765}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: 9b79da7e3f0089d478ffe7b6a287acd4, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6
+--- !u!114 &4314368026092078017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3022813375737257765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bda16088a39c35439186c77282dd237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 1
+  FallTimer: 1
 --- !u!1 &6914861050724598298
 GameObject:
   m_ObjectHideFlags: 0
