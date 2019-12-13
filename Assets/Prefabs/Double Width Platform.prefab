@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bda16088a39c35439186c77282dd237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 1
+  MaxSpeed: 2
   FallTimer: 2
   EndPosition: {fileID: 7627580037964445612}
 --- !u!1 &5905559627984049047
