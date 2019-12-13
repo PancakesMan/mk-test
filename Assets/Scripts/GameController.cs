@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
 
     [Header("Sound")]
     public AudioSource SoundPlayer;
+    public AudioClip DeathClip;
 
     [Header("UI")]
     public GameObject DeathScreen;
@@ -65,9 +66,11 @@ public class GameController : MonoBehaviour
 
         if (collision.CompareTag("Water"))
         {
+            SoundPlayer.Stop();
             animator.SetBool("Playing", false);
 
             //Death
+            SoundPlayer.PlayOneShot(DeathClip);
             ScoreDisplay.gameObject.SetActive(false);
 
             DeathScreen.SetActive(true);
@@ -79,7 +82,6 @@ public class GameController : MonoBehaviour
                 NewHighScoreMessage.SetActive(true);
                 PlayerPrefs.SetInt("Highscore", Score);
             }
-            SoundPlayer.Stop();
         }
     }
 
