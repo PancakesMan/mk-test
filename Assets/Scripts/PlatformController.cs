@@ -7,6 +7,8 @@ public class PlatformController : MonoBehaviour
     public float MaxSpeed = 1.0f;
     public float FallTimer = 1.0f;
 
+    public Transform EndPosition;
+
     private Rigidbody2D rb2d;
 
     void Awake()

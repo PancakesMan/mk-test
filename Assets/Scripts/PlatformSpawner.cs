@@ -7,10 +7,10 @@ public class PlatformSpawner : MonoBehaviour
     public GameObject[] Prefabs;
 
     [Header("Spawn Settings")]
-    public int SpawnVerticalMax;
-    public int SpawnVerticalMin;
-    public int HorizontalMax;
-    public int VerticalMax;
+    public float VerticalRandomFactorMax;
+    public float VerticalRandomFactorMin;
+    public float SpawnVerticalMax;
+    public float SpawnVerticalMin;
     public float SpawnDelayMax;
     public float SpawnDelayMin;
 
@@ -26,7 +26,6 @@ public class PlatformSpawner : MonoBehaviour
         }
 
         SpawnOrigin = transform.position;
-        SpawnDelay = Random.Range(SpawnDelayMin, SpawnDelayMax);
     }
 
     // Update is called once per frame
@@ -36,11 +35,18 @@ public class PlatformSpawner : MonoBehaviour
         if (timer > SpawnDelay)
         {
             GameObject go = Instantiate(Prefabs[Random.Range(0, Prefabs.Length)]);
-            go.transform.position = new Vector2(transform.position.x, Random.Range(SpawnVerticalMin, SpawnVerticalMax));
-            //SpawnOrigin = go.transform.position;
+            go.transform.position = new Vector2(SpawnOrigin.x, SpawnOrigin.y + Random.Range(VerticalRandomFactorMin, VerticalRandomFactorMax));
+            if (go.transform.position.y < SpawnVerticalMin)
+            {
+                go.transform.position = new Vector2(go.transform.position.x, SpawnVerticalMin);
+            }
+            if (go.transform.position.y > SpawnVerticalMax)
+            {
+                go.transform.position = new Vector2(go.transform.position.x, SpawnVerticalMax);
+            }
+            SpawnOrigin = go.GetComponent<PlatformController>().EndPosition.position;
 
             timer = 0.0f;
-            //SpawnDelay = go.GetComponent<PlatformController>().FallTimer * 0.5f;
             SpawnDelay = Random.Range(SpawnDelayMin, SpawnDelayMax);
         }
     }

@@ -32,7 +32,6 @@ public class GameController : MonoBehaviour
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
 
-        //debug
         animator.SetBool("Playing", true);
     }
 
@@ -89,8 +88,12 @@ public class GameController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Platform"))
         {
-            Jumping = false;
-            collision.gameObject.GetComponent<PlatformController>().MakeUnstable();
+            // We only stop jumping if we land on top of the platform
+            if (collision.gameObject.transform.position.y < transform.position.y)
+            {
+                Jumping = false;
+                collision.gameObject.GetComponent<PlatformController>().MakeUnstable();
+            }
         }
     }
 }
