@@ -5,11 +5,18 @@ using UnityEngine.UI;
 
 public class HighscoreController : MonoBehaviour
 {
-    private Text highscore;
+    private Text highscore;  // Text displaying the Highscore
 
     void Awake()
     {
+        // Find the Text component
         highscore = GetComponent<Text>();
-        highscore.text = "High Score: " + PlayerPrefs.GetInt("Highscore", 0);
+
+        // If highscore is not null
+        if (highscore)
+        {
+            // Display the highscore stored in PlayerPrefs
+            highscore.text = "High Score: " + PlayerPrefs.GetInt("Highscore", 0);
+        }
     }
 }
