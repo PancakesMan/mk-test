@@ -24,9 +24,13 @@ public class GameController : MonoBehaviour
 
     void Awake()
     {
+        // If Player is not null
         if (Player)
         {
+            // Subscribe to the Player's OnDeath event
             Player.OnDeath.AddListener(GameOver);
+
+            // Subscribe to the Player's OnPickupCollected event
             Player.OnPickupCollectable.AddListener(ItemCollected);
         }
     }
