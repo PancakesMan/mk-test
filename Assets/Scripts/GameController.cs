@@ -49,8 +49,11 @@ public class GameController : MonoBehaviour
         // If animator is not null and we are playing
         if (animator && animator.GetBool("Playing"))
         {
-            // Check if the user tapped the screen
-            if (!Jumping && Input.GetMouseButtonDown(0))
+            // Determine if the user is falling
+            bool Falling = rb2d.velocity.y < -0.01;
+
+            // Check if the user tapped the screen while on a platform
+            if (!Jumping && !Falling && Input.GetMouseButtonDown(0))
             {
                 // If they did, apply jump force
                 rb2d.velocity = new Vector2(0, JumpForce);
