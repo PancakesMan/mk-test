@@ -414,6 +414,57 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9527dbd1c49e34495d238decebf566, type: 3}
+--- !u!1 &245335341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 245335343}
+  - component: {fileID: 245335342}
+  m_Layer: 0
+  m_Name: Game Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &245335342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245335341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba0cc28038c7468469b18faa43688dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Score: 0
+  ScoreDisplay: {fileID: 1089378247}
+  Player: {fileID: 590929240}
+  SoundPlayer: {fileID: 1272272761}
+  DeathClip: {fileID: 8300000, guid: c1b00bb8bfc714944b65af551ec46f52, type: 3}
+  DeathScreen: {fileID: 1209518824}
+  NewHighScoreMessage: {fileID: 1922526295}
+  FinalScoreDisplay: {fileID: 1618955493}
+--- !u!4 &245335343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245335341}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.043545764, y: 0.02090821, z: -797.6211}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &267874203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6886087868521634261, guid: ab9527dbd1c49e34495d238decebf566,
@@ -784,19 +835,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 590929234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba0cc28038c7468469b18faa43688dfe, type: 3}
+  m_Script: {fileID: 11500000, guid: a92899ca1d091114c9ec0f079030aca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Score: 0
-  ScoreDisplay: {fileID: 1089378247}
-  Playing: 0
-  Jumping: 0
   JumpForce: 7
-  SoundPlayer: {fileID: 1272272761}
-  DeathClip: {fileID: 8300000, guid: c1b00bb8bfc714944b65af551ec46f52, type: 3}
-  DeathScreen: {fileID: 1209518824}
-  NewHighScoreMessage: {fileID: 1922526295}
-  FinalScoreDisplay: {fileID: 1618955493}
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPickupCollectable:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &627877687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2165,7 +2213,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1272272763
 MonoBehaviour:
