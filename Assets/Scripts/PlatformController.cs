@@ -34,7 +34,8 @@ public class PlatformController : MonoBehaviour
     private void Fall()
     {
         // Unlock the Y constraint on the Ridigbody2D
-        rb2d.constraints = RigidbodyConstraints2D.None;
+        //rb2d.constraints = RigidbodyConstraints2D.None;
+        rb2d.bodyType = RigidbodyType2D.Dynamic;
     }
 
     private void OnBecameInvisible()

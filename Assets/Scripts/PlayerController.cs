@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private bool Jumping = false; // Are we jumping?
     private bool Falling = false; // Are we falling?
+    private BoxCollider2D BoundingBox; // Used to determine width of object for edge position calculations
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,9 @@ public class PlayerController : MonoBehaviour
 
         // Get the Rigidbody2D component
         rb2d = GetComponent<Rigidbody2D>();
+
+        // Get the BoxCollider2D component
+        BoundingBox = GetComponent<BoxCollider2D>();
 
         // Start the running animation
         animator.SetBool("Playing", true);
@@ -43,11 +47,8 @@ public class PlayerController : MonoBehaviour
         // If animator is not null and we are playing
         if (animator && animator.GetBool("Playing"))
         {
-            // Determine if the user is falling
-            bool Falling = rb2d.velocity.y < -0.01;
-
             // Check if the user tapped the screen while on a platform
-            if (!Jumping && !Falling && Input.GetMouseButtonDown(0))
+            if (!Jumping && Input.GetMouseButtonDown(0))
             {
                 // If they did, apply jump force
                 rb2d.velocity = new Vector2(0, JumpForce);
@@ -90,13 +91,17 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Platform"))
         {
             // And we hit it from above
-            if (collision.gameObject.transform.position.y < transform.position.y)
+            if ((transform.position.y - BoundingBox.bounds.extents.y) > collision.gameObject.transform.position.y)
             {
                 // We landed and are no longer jumping
                 Jumping = false;
 
-                // Make the platform unstable
-                collision.gameObject.GetComponent<PlatformController>().MakeUnstable();
+                //If our first point of contact was on the right side of it's left edge
+                if ((transform.position.x + BoundingBox.bounds.extents.x) > collision.gameObject.transform.position.x)
+                {
+                    // Make the platform unstable
+                    collision.gameObject.GetComponent<PlatformController>().MakeUnstable();
+                }
             }
         }
     }
