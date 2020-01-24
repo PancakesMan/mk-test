@@ -1018,7 +1018,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1156.4203, y: -456}
+  m_AnchoredPosition: {x: 1156.4219, y: -456}
   m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &830062093
@@ -1202,7 +1202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1156.4203, y: -765}
+  m_AnchoredPosition: {x: 1156.4219, y: -765}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &899131785
@@ -1496,6 +1496,9 @@ MonoBehaviour:
       type: 3}
     PoolSize: 5
   - Prefab: {fileID: 485354825119965570, guid: 24a590f03c390dd408d310c4f9e47cbe, type: 3}
+    PoolSize: 5
+  - Prefab: {fileID: 8955220522625114026, guid: 6d0159996315c3342accccb0b8663dde,
+      type: 3}
     PoolSize: 5
   HorizontalRandomFactorMax: 1.5
   HorizontalRandomFactorMin: 1.5
@@ -2657,7 +2660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1156.4203, y: -574}
+  m_AnchoredPosition: {x: 1156.4219, y: -574}
   m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1608360794
@@ -3225,7 +3228,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1156.4203, y: -687}
+  m_AnchoredPosition: {x: 1156.4219, y: -687}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1903373817

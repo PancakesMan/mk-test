@@ -74,6 +74,19 @@ public class PlayerController : MonoBehaviour
             OnPickupCollectable.Invoke(collectable);
         }
 
+        // If we collide with a saw, the player dies
+        if (collision.gameObject.CompareTag("Saw"))
+        {
+            // We died, stop animating the player
+            animator.SetBool("Playing", false);
+
+            // Remove the player's collider so they fall
+            Destroy(GetComponent<BoxCollider2D>());
+
+            // Fire the OnDeath event
+            OnDeath.Invoke("You were sliced in half by a saw");
+        }
+
         // If we touch the water
         if (collision.CompareTag("Water"))
         {

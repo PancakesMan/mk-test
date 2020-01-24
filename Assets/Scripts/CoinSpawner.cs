@@ -29,7 +29,7 @@ public class CoinSpawner : MonoBehaviour
                 // Instantiate the coin object
                 info.CoinInstance = Instantiate(CoinPrefab);
 
-                // Enure it spawns in the correct position
+                // Ensure it spawns in the correct position
                 info.CoinInstance.transform.SetParent(info.CoinSpawnPoint.transform, false);
             }
         }
