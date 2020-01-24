@@ -1410,10 +1410,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2890d15370bdefb40a55ece5650dd1a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefabs:
-  - {fileID: 7576734638635547187, guid: 8ed3f639f0a101a43b39f21707d7dc8e, type: 3}
-  - {fileID: 6104855928943821934, guid: 8be626109d87b9e498f0553c98d6fd0a, type: 3}
-  - {fileID: 485354825119965570, guid: 24a590f03c390dd408d310c4f9e47cbe, type: 3}
+  ObjectPools:
+  - Prefab: {fileID: 7576734638635547187, guid: 8ed3f639f0a101a43b39f21707d7dc8e,
+      type: 3}
+    PoolSize: 50
+  - Prefab: {fileID: 6104855928943821934, guid: 8be626109d87b9e498f0553c98d6fd0a,
+      type: 3}
+    PoolSize: 50
+  - Prefab: {fileID: 485354825119965570, guid: 24a590f03c390dd408d310c4f9e47cbe, type: 3}
+    PoolSize: 50
   VerticalRandomFactorMax: 1.9
   VerticalRandomFactorMin: -4
   SpawnVerticalMax: 3
@@ -2275,6 +2280,9 @@ MonoBehaviour:
   MaxSpeed: 2
   FallTimer: 3
   EndPosition: {fileID: 1785705301}
+  OnDisabled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &1371995448
 Rigidbody2D:
   serializedVersion: 4

@@ -248,11 +248,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CoinPrefab: {fileID: 1412061808883555225, guid: d58287a4794bcfb48b9904263a29a641,
     type: 3}
-  CoinSpawnPoints:
-  - {fileID: 485354825468728937}
-  - {fileID: 485354824590289684}
-  - {fileID: 485354824655159011}
-  CoinSpawnChance: 0.5
+  CoinSpawns:
+  - CoinSpawnPoint: {fileID: 485354825468728937}
+    CoinInstance: {fileID: 0}
+    CoinSpawnChance: 0.5
+  - CoinSpawnPoint: {fileID: 485354824590289684}
+    CoinInstance: {fileID: 0}
+    CoinSpawnChance: 0.5
+  - CoinSpawnPoint: {fileID: 485354824655159011}
+    CoinInstance: {fileID: 0}
+    CoinSpawnChance: 0.5
 --- !u!50 &485354825119965568
 Rigidbody2D:
   serializedVersion: 4
@@ -289,6 +294,9 @@ MonoBehaviour:
   MaxSpeed: 2
   FallTimer: 1.5
   EndPosition: {fileID: 485354824437942163}
+  OnDisabled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &485354825289081676
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,20 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlatformController : MonoBehaviour
 {
+    // Event class for when object is disabled
+    [System.Serializable]
+    public class ObjectDisabledEvent : UnityEvent<GameObject> { };
+
     public float MaxSpeed = 1.0f;  // Speed at which the platform moves
     public float FallTimer = 1.0f; // How long it takes to fall after BecomeUnstable is called
 
     public Transform EndPosition;  // Point on the right-hand edge of the platform
 
+    public ObjectDisabledEvent OnDisabled; // Event fired when object is disabled
+
     private Rigidbody2D rb2d;      // Rigidbody2D of the platform
+    private CoinSpawner coinSpawner;   // CoinSpawner for the platform
 
     void Awake()
     {
         // Get the Rigidbody2D component
         rb2d = GetComponent<Rigidbody2D>();
+
+        // Get the CoinSpawner component
+        coinSpawner = GetComponent<CoinSpawner>();
     }
 
     private void Update()
@@ -33,15 +44,31 @@ public class PlatformController : MonoBehaviour
     // Make the platform fall
     private void Fall()
     {
-        // Unlock the Y constraint on the Ridigbody2D
-        //rb2d.constraints = RigidbodyConstraints2D.None;
+        // Make the platform Dynamic so it's affected by physics
         rb2d.bodyType = RigidbodyType2D.Dynamic;
+    }
+
+    public void ResetPlatform()
+    {
+        // Reset the platform's velocity, position, and rotation
+        rb2d.velocity = Vector2.zero;
+        transform.position = new Vector3(-100f, -100f); // Spawn it off-screen so it's out of the way
+        transform.rotation = Quaternion.identity;
+
+        // Make the platform Kinematic
+        rb2d.bodyType = RigidbodyType2D.Kinematic;
+
+        // Spawn Coins
+        coinSpawner.SpawnNewCoins();
+
+        // Enable the gameObject
+        gameObject.SetActive(true);
     }
 
     private void OnBecameInvisible()
     {
-        // Destroy the platform when it goes off the left of the screen
-        Destroy(gameObject);
+        // Disable the object when it goes off the left of the screen
+        gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -49,8 +76,13 @@ public class PlatformController : MonoBehaviour
         // If we collide with the water
         if (collision.gameObject.CompareTag("Water"))
         {
-            // Destroy the platform
-            Destroy(gameObject);
+            // Disable the object
+            gameObject.SetActive(false);
         }
+    }
+
+    private void OnDisable()
+    {
+        OnDisabled.Invoke(gameObject);
     }
 }
