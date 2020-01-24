@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
 
     [Header("UI")]
     public GameObject DeathScreen;          // UI to show when the player dies
+    public Text DeathReason;                // Text to display how you died
     public GameObject NewHighScoreMessage;  // Message to display if we get a new highscore
     public Text FinalScoreDisplay;          // Text to display the final score
 
@@ -50,7 +51,7 @@ public class GameController : MonoBehaviour
         ScoreDisplay.text = "Score: " + Score.ToString();
     }
 
-    private void GameOver()
+    private void GameOver(string reason = "")
     {
         // Stop playing the BGM
         SoundPlayer.Stop();
@@ -63,6 +64,9 @@ public class GameController : MonoBehaviour
 
         // Activate the death screen
         DeathScreen.SetActive(true);
+
+        // Show the reason we died
+        DeathReason.text = reason;
 
         // Show the final score we had when we died
         FinalScoreDisplay.text = "Score: " + Score.ToString();

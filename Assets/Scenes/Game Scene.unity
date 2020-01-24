@@ -449,6 +449,7 @@ MonoBehaviour:
   SoundPlayer: {fileID: 1272272761}
   DeathClip: {fileID: 8300000, guid: c1b00bb8bfc714944b65af551ec46f52, type: 3}
   DeathScreen: {fileID: 1209518824}
+  DeathReason: {fileID: 830062093}
   NewHighScoreMessage: {fileID: 1922526295}
   FinalScoreDisplay: {fileID: 1618955493}
 --- !u!4 &245335343
@@ -983,6 +984,83 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9527dbd1c49e34495d238decebf566, type: 3}
+--- !u!1 &830062091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 830062092}
+  - component: {fileID: 830062094}
+  - component: {fileID: 830062093}
+  m_Layer: 5
+  m_Name: Death Reason
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &830062092
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830062091}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1209518825}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1156.4203, y: -456}
+  m_SizeDelta: {x: 160, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &830062093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830062091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 42
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 42
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: THIS IS THE REASON YOU DIED
+--- !u!222 &830062094
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830062091}
+  m_CullTransparentMesh: 0
 --- !u!1 &844699101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,11 +1198,11 @@ RectTransform:
   m_Children:
   - {fileID: 1613958352}
   m_Father: {fileID: 1209518825}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1156.4219, y: -765}
+  m_AnchoredPosition: {x: 1156.4203, y: -765}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &899131785
@@ -1413,18 +1491,20 @@ MonoBehaviour:
   ObjectPools:
   - Prefab: {fileID: 7576734638635547187, guid: 8ed3f639f0a101a43b39f21707d7dc8e,
       type: 3}
-    PoolSize: 50
+    PoolSize: 5
   - Prefab: {fileID: 6104855928943821934, guid: 8be626109d87b9e498f0553c98d6fd0a,
       type: 3}
-    PoolSize: 50
+    PoolSize: 5
   - Prefab: {fileID: 485354825119965570, guid: 24a590f03c390dd408d310c4f9e47cbe, type: 3}
-    PoolSize: 50
+    PoolSize: 5
+  HorizontalRandomFactorMax: 1.5
+  HorizontalRandomFactorMin: 1.5
   VerticalRandomFactorMax: 1.9
   VerticalRandomFactorMin: -4
   SpawnVerticalMax: 3
   SpawnVerticalMin: -4
-  SpawnDelayMax: 1
-  SpawnDelayMin: 1
+  SpawnDelayMax: 1.5
+  SpawnDelayMin: 1.5
 --- !u!1 &1040190361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,6 +1990,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 830062092}
   - {fileID: 1608360793}
   - {fileID: 1903373816}
   - {fileID: 899131784}
@@ -2552,7 +2633,7 @@ GameObject:
   - component: {fileID: 1608360795}
   - component: {fileID: 1608360794}
   m_Layer: 5
-  m_Name: Death Message
+  m_Name: Death Score Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2572,11 +2653,11 @@ RectTransform:
   - {fileID: 1922526296}
   - {fileID: 1618955492}
   m_Father: {fileID: 1209518825}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1156.4219, y: -574}
+  m_AnchoredPosition: {x: 1156.4203, y: -574}
   m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1608360794
@@ -3140,11 +3221,11 @@ RectTransform:
   m_Children:
   - {fileID: 1169749473}
   m_Father: {fileID: 1209518825}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1156.4219, y: -687}
+  m_AnchoredPosition: {x: 1156.4203, y: -687}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1903373817

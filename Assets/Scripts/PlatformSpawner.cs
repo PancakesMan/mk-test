@@ -12,7 +12,7 @@ public class PlatformSpawner : MonoBehaviour
 
         private Queue<GameObject> Pool;
 
-        public void Setup()
+        public void Initialise()
         {
             Pool = new Queue<GameObject>(PoolSize);
             for (int i = 0; i < PoolSize; i++)
@@ -53,6 +53,8 @@ public class PlatformSpawner : MonoBehaviour
     public ObjectPool[] ObjectPools; // List of platforms that can be spawned
 
     [Header("Spawn Settings")]
+    public float HorizontalRandomFactorMax; // Max position platform is randomly placed relative to the previous
+    public float HorizontalRandomFactorMin; // Min position platform is randomly placed relative to the previous
     public float VerticalRandomFactorMax; // Max position platform is randomly placed relative to the previous
     public float VerticalRandomFactorMin; // Min position platform is randomly placed relative to the previous
     public float SpawnVerticalMax; // Max vertical position of the new platform
@@ -62,7 +64,7 @@ public class PlatformSpawner : MonoBehaviour
 
     private float SpawnDelay;    // Stores the current delay until next platform spawns
     private float timer = 0.0f;  // Internal timer used to spawn platforms
-    private Vector2 SpawnOrigin; // Origin position platforms are spawned relative to
+    private Transform SpawnOrigin; // Origin position platforms are spawned relative to
 
     void Awake()
     {
@@ -75,13 +77,13 @@ public class PlatformSpawner : MonoBehaviour
         }
 
         // Initialize the Object Pools
-        for (int i = 0; i < ObjectPools.Length; i++)
+        foreach (ObjectPool pool in ObjectPools)
         {
-            ObjectPools[i].Setup();
+            pool.Initialise();
         }
 
         // Default SpawnOrigin to the position of the current object
-        SpawnOrigin = transform.position;
+        SpawnOrigin = transform;
     }
 
     // Update is called once per frame
@@ -121,21 +123,15 @@ public class PlatformSpawner : MonoBehaviour
         // Reset the platform
         controller.ResetPlatform();
 
-        // Give it a random position
-        controller.transform.position = new Vector2(SpawnOrigin.x, SpawnOrigin.y + Random.Range(VerticalRandomFactorMin, VerticalRandomFactorMax));
+        // Give it a random position relative to the end of the previous platform
+        float X = SpawnOrigin.position.x + Random.Range(HorizontalRandomFactorMin, HorizontalRandomFactorMax);
+        float Y = SpawnOrigin.position.y + Random.Range(VerticalRandomFactorMin, VerticalRandomFactorMax);
 
-        // Ensure platform falls between Min and Max vertical position
-        if (controller.transform.position.y < SpawnVerticalMin)
-        {
-            controller.transform.position = new Vector2(controller.transform.position.x, SpawnVerticalMin);
-        }
-        if (controller.transform.position.y > SpawnVerticalMax)
-        {
-            controller.transform.position = new Vector2(controller.transform.position.x, SpawnVerticalMax);
-        }
+        // Ensure the platform spawns on-screen
+        controller.transform.position = new Vector2(X, Mathf.Max(Mathf.Min(SpawnVerticalMax, Y), SpawnVerticalMin));
 
         // Update the SpawnOrigin for the next platform
-        SpawnOrigin = controller.EndPosition.position;
+        SpawnOrigin = controller.EndPosition;
 
         // Return success
         return true;

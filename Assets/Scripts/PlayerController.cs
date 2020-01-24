@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     // Custom event classes
     [System.Serializable]
-    public class DeathEvent : UnityEvent { }
+    public class DeathEvent : UnityEvent<string> { }
     [System.Serializable]
     public class PickupEvent : UnityEvent<Collectable> { }
 
@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Playing", false);
 
             // Fire the OnDeath event
-            OnDeath.Invoke();
+            OnDeath.Invoke("You fell in the water and drowned");
         }
     }
 
