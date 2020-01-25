@@ -3627,6 +3627,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Triple Width Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 485354825119965570, guid: 24a590f03c390dd408d310c4f9e47cbe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 485354825119965581, guid: 24a590f03c390dd408d310c4f9e47cbe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3696,6 +3701,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Single Width Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 7576734638635547187, guid: 8ed3f639f0a101a43b39f21707d7dc8e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2975975887913070926, guid: 8ed3f639f0a101a43b39f21707d7dc8e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3764,6 +3774,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Double Width Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104855928943821934, guid: 8be626109d87b9e498f0553c98d6fd0a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6104855928943821929, guid: 8be626109d87b9e498f0553c98d6fd0a,
         type: 3}

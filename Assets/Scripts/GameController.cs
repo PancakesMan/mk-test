@@ -44,8 +44,8 @@ public class GameController : MonoBehaviour
         // Play the sound for collecting that specific collectable
         SoundPlayer.PlayOneShot(item.CollectSound);
 
-        // Destroy the collectable
-        Destroy(item.gameObject);
+        // Disable the collectable
+        item.gameObject.SetActive(false);
 
         // Update the current score display
         ScoreDisplay.text = "Score: " + Score.ToString();

@@ -13,8 +13,7 @@ public class CoinSpawner : MonoBehaviour
     }
 
     public GameObject CoinPrefab;         // Prefab to spawn
-    public CoinSpawnInfo[] CoinSpawns;  // Available places to spawn it
-    //public float CoinSpawnChance = 0.5f;  // Chance of it spawning at each point
+    public CoinSpawnInfo[] CoinSpawns;    // Available places to spawn it
 
     public void SpawnNewCoins()
     {
@@ -26,11 +25,19 @@ public class CoinSpawner : MonoBehaviour
             // Determine if we will spawn a coin here
             if (Random.Range(0.0f, 1.0f) < info.CoinSpawnChance)
             {
-                // Instantiate the coin object
-                info.CoinInstance = Instantiate(CoinPrefab);
-
-                // Ensure it spawns in the correct position
-                info.CoinInstance.transform.SetParent(info.CoinSpawnPoint.transform, false);
+                // If one hasn't been created yet
+                if (!info.CoinInstance)
+                {
+                    // Create a new coin
+                    info.CoinInstance = Instantiate(CoinPrefab);
+                    // Ensure it spawns in the correct position
+                    info.CoinInstance.transform.SetParent(info.CoinSpawnPoint.transform, false);
+                }
+                else
+                {
+                    // Enable the coin instance that has already been created
+                    info.CoinInstance.SetActive(true);
+                }
             }
         }
     }
@@ -40,10 +47,11 @@ public class CoinSpawner : MonoBehaviour
         // For each spawn point available
         foreach (CoinSpawnInfo info in CoinSpawns)
         {
-            // Delete coins if they haven't been collected
+            // If a coin has already been created
             if (info.CoinInstance)
             {
-                Destroy(info.CoinInstance);
+                // Disable it
+                info.CoinInstance.SetActive(false);
             }
         }
     }
