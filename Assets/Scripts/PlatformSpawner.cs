@@ -59,10 +59,8 @@ public class PlatformSpawner : MonoBehaviour
     public float VerticalRandomFactorMin; // Min position platform is randomly placed relative to the previous
     public float SpawnVerticalMax; // Max vertical position of the new platform
     public float SpawnVerticalMin; // Min vertical position of the new platform
-    public float SpawnDelayMax; // Max delay before next platform is spawned
-    public float SpawnDelayMin; // Min delay before next platform is spawned
+    public float SpawnDelay;    // Stores the current delay until next platform spawns
 
-    private float SpawnDelay;    // Stores the current delay until next platform spawns
     private float timer = 0.0f;  // Internal timer used to spawn platforms
     private Transform SpawnOrigin; // Origin position platforms are spawned relative to
 
@@ -100,9 +98,6 @@ public class PlatformSpawner : MonoBehaviour
             {
                 // Reset the timer
                 timer = 0.0f;
-
-                // Pick a new delay time
-                SpawnDelay = Random.Range(SpawnDelayMin, SpawnDelayMax);
             }
         }
     }

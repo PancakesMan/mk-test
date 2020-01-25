@@ -22,8 +22,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;  // RIgidbody2D for the Player
 
     private bool Jumping = false; // Are we jumping?
-    //private bool Falling = false; // Are we falling?
     private BoxCollider2D BoundingBox; // Used to determine width of object for edge position calculations
+
+    private float HitboxSizeReduction = 0.95f; // Reduces size of hitbox to account for collider penetration
 
     // Start is called before the first frame update
     void Start()
@@ -110,12 +111,22 @@ public class PlayerController : MonoBehaviour
                 Jumping = false;
 
                 //If our first point of contact was on the right side of it's left edge
-                if ((transform.position.x + BoundingBox.bounds.extents.x) > collision.gameObject.transform.position.x)
+                if ((transform.position.x + (BoundingBox.bounds.extents.x * HitboxSizeReduction)) > collision.gameObject.transform.position.x)
                 {
                     // Make the platform unstable
                     collision.gameObject.GetComponent<PlatformController>().MakeUnstable();
                 }
             }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        // If we stopped colliding with a platform
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            // We are jumping (or falling)
+            Jumping = true;
         }
     }
 }
