@@ -11,6 +11,7 @@ public class PlatformController : MonoBehaviour
 
     public float MaxSpeed = 1.0f;  // Speed at which the platform moves
     public float FallTimer = 1.0f; // How long it takes to fall after BecomeUnstable is called
+    private bool Falling = false;  // True if BecomeUnstable was called
 
     public Transform EndPosition;  // Point on the right-hand edge of the platform
 
@@ -38,7 +39,11 @@ public class PlatformController : MonoBehaviour
     public void MakeUnstable()
     {
         // Calls the Fall function after FallTimer seconds
-        Invoke("Fall", FallTimer);
+        if (!Falling)
+        {
+            Falling = true;
+            Invoke("Fall", FallTimer);
+        }
     }
 
     // Make the platform fall
@@ -54,6 +59,9 @@ public class PlatformController : MonoBehaviour
         rb2d.velocity = Vector2.zero;
         transform.position = new Vector3(-100f, -100f); // Spawn it off-screen so it's out of the way
         transform.rotation = Quaternion.identity;
+
+        // Enable the platform to become unstable again
+        Falling = false;
 
         // Make the platform Kinematic
         rb2d.bodyType = RigidbodyType2D.Kinematic;

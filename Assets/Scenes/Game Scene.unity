@@ -1564,8 +1564,8 @@ MonoBehaviour:
   VerticalRandomFactorMin: -4
   SpawnVerticalMax: 3
   SpawnVerticalMin: -4
-  SpawnDelayMax: 1.5
-  SpawnDelayMin: 1.5
+  SpawnDelayMax: 0
+  SpawnDelayMin: 0
 --- !u!1 &1040190361
 GameObject:
   m_ObjectHideFlags: 0
