@@ -87,6 +87,7 @@ public class PlatformController : MonoBehaviour
 
     private void OnDisable()
     {
+        // Fire the OnDisabled event
         OnDisabled.Invoke(gameObject);
     }
 }
