@@ -38,10 +38,12 @@ public class PlatformController : MonoBehaviour
     // Gets the platform ready to fall
     public void MakeUnstable()
     {
-        // Calls the Fall function after FallTimer seconds
         if (!Falling)
         {
+            // Prevent function being called again
             Falling = true;
+
+            // Calls the Fall function after FallTimer seconds
             Invoke("Fall", FallTimer);
         }
     }

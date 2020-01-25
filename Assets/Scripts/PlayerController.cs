@@ -19,11 +19,11 @@ public class PlayerController : MonoBehaviour
     public PickupEvent OnPickupCollectable;  // Event fired when we collect a collectable
 
     private Animator animator; // Animator for the Player
-    private Rigidbody2D rb2d;  // RIgidbody2D for the Player
+    private Rigidbody2D rb2d;  // Rigidbody2D for the Player
 
+    private bool Alive = true;
     private bool Jumping = false; // Are we jumping?
     private BoxCollider2D BoundingBox; // Used to determine width of object for edge position calculations
-
     private float HitboxSizeReduction = 0.95f; // Reduces size of hitbox to account for collider penetration
 
     // Start is called before the first frame update
@@ -75,27 +75,18 @@ public class PlayerController : MonoBehaviour
             OnPickupCollectable.Invoke(collectable);
         }
 
-        // If we collide with a saw, the player dies
+        // If we touch a saw, the player dies
         if (collision.gameObject.CompareTag("Saw"))
         {
-            // We died, stop animating the player
-            animator.SetBool("Playing", false);
-
-            // Remove the player's collider so they fall
-            Destroy(GetComponent<BoxCollider2D>());
-
-            // Fire the OnDeath event
-            OnDeath.Invoke("You were sliced in half by a saw");
+            // Kill the player, give a reason
+            Kill("You were sliced in half by a saw");
         }
 
         // If we touch the water
         if (collision.CompareTag("Water"))
         {
-            // We died, stop animating the player
-            animator.SetBool("Playing", false);
-
-            // Fire the OnDeath event
-            OnDeath.Invoke("You fell in the water and drowned");
+            // Kill the player, give a reason
+            Kill("You fell in the water and drowned");
         }
     }
 
@@ -128,5 +119,22 @@ public class PlayerController : MonoBehaviour
             // We are jumping (or falling)
             Jumping = true;
         }
+    }
+
+    private void Kill(string reason)
+    {
+        // Don't do anything if we're already dead
+        if (!Alive) return;
+
+        Alive = false;
+
+        // We died, stop animating the player
+        animator.SetBool("Playing", false);
+
+        // Remove the player's collider so they fall
+        Destroy(GetComponent<BoxCollider2D>());
+
+        // Fire the OnDeath event
+        OnDeath.Invoke(reason);
     }
 }
