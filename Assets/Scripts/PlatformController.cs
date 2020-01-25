@@ -65,18 +65,22 @@ public class PlatformController : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    private void OnBecameInvisible()
-    {
-        // Disable the object when it goes off the left of the screen
-        gameObject.SetActive(false);
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // If we collide with the water
         if (collision.gameObject.CompareTag("Water"))
         {
             // Disable the object
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        // If the platform goes off the left edge of the screen
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            // Disable the platform
             gameObject.SetActive(false);
         }
     }
