@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;  // RIgidbody2D for the Player
 
     private bool Jumping = false; // Are we jumping?
-    private bool Falling = false; // Are we falling?
+    //private bool Falling = false; // Are we falling?
     private BoxCollider2D BoundingBox; // Used to determine width of object for edge position calculations
 
     // Start is called before the first frame update

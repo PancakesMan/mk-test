@@ -7,21 +7,22 @@ public class ObstacleSpawner : MonoBehaviour
     public GameObject EnemyPrefab;
     public GameObject[] SpawnPoints;
 
-    //public float SpawnChance;
+    private GameObject EnemyInstance;
 
-    // Start is called before the first frame update
-    void Start()
+    // Awake is called before OnEnable
+    void Awake()
     {
-        // Instantiate the enemy
-        GameObject enemy = Instantiate(EnemyPrefab);
+        // Instantiate the enemy object
+        EnemyInstance = Instantiate(EnemyPrefab);
 
-        // Ensure it spawns in the correct position
-        enemy.transform.SetParent(SpawnPoints[Random.Range(0, SpawnPoints.Length)].transform, false);
+        // Spawn it in one of the random spawn points
+        EnemyInstance.transform.SetParent(SpawnPoints[Random.Range(0, SpawnPoints.Length)].transform, false);
     }
 
-    // Update is called once per frame
-    void Update()
+    // When pooled platform is reused
+    private void OnEnable()
     {
-        
+        // Move the saw instance to one of the spawn points randomly
+        EnemyInstance.transform.SetParent(SpawnPoints[Random.Range(0, SpawnPoints.Length)].transform, false);
     }
 }
