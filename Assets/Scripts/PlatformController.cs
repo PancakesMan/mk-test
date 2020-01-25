@@ -7,7 +7,7 @@ public class PlatformController : MonoBehaviour
 {
     // Event class for when object is disabled
     [System.Serializable]
-    public class ObjectDisabledEvent : UnityEvent<GameObject> { };
+    public class ObjectDisabledEvent : UnityEvent<PlatformController> { };
 
     public float MaxSpeed = 1.0f;  // Speed at which the platform moves
     public float FallTimer = 1.0f; // How long it takes to fall after BecomeUnstable is called
@@ -98,6 +98,6 @@ public class PlatformController : MonoBehaviour
     private void OnDisable()
     {
         // Fire the OnDisabled event
-        OnDisabled.Invoke(gameObject);
+        OnDisabled.Invoke(this);
     }
 }

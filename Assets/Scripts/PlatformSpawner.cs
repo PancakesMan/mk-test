@@ -10,11 +10,11 @@ public class PlatformSpawner : MonoBehaviour
         public GameObject Prefab;
         public int PoolSize;
 
-        private Queue<GameObject> Pool;
+        private Queue<PlatformController> Pool;
 
         public void Initialise()
         {
-            Pool = new Queue<GameObject>(PoolSize);
+            Pool = new Queue<PlatformController>(PoolSize);
             for (int i = 0; i < PoolSize; i++)
             {
                 // Instatiate new platform
@@ -31,11 +31,11 @@ public class PlatformSpawner : MonoBehaviour
                 controller.OnDisabled.AddListener(Return);
 
                 // Add the spawned platform to the queue
-                Pool.Enqueue(obj);
+                Pool.Enqueue(controller);
             }
         }
 
-        public GameObject Get()
+        public PlatformController Get()
         {
             // Ensure there are are unused objects in the pool
             if (Pool.Count > 0)
@@ -44,7 +44,7 @@ public class PlatformSpawner : MonoBehaviour
                 return null;
         }
 
-        public void Return(GameObject obj)
+        public void Return(PlatformController obj)
         {
             Pool.Enqueue(obj);
         }
@@ -60,9 +60,10 @@ public class PlatformSpawner : MonoBehaviour
     public float SpawnVerticalMax; // Max vertical position of the new platform
     public float SpawnVerticalMin; // Min vertical position of the new platform
     public float SpawnDelay;    // Stores the current delay until next platform spawns
+    public Transform SpawnOrigin; // Origin position platforms are spawned relative to
 
     private float timer = 0.0f;  // Internal timer used to spawn platforms
-    private Transform SpawnOrigin; // Origin position platforms are spawned relative to
+    
 
     void Awake()
     {
@@ -80,8 +81,9 @@ public class PlatformSpawner : MonoBehaviour
             pool.Initialise();
         }
 
-        // Default SpawnOrigin to the position of the current object
-        SpawnOrigin = transform;
+        // Default SpawnOrigin to the position of the current object if it's null
+        if (!SpawnOrigin)
+            SpawnOrigin = transform;
     }
 
     // Update is called once per frame
@@ -105,15 +107,13 @@ public class PlatformSpawner : MonoBehaviour
     public bool TrySpawnPlatform()
     {
         // Attempt to get a random platform
-        GameObject go = ObjectPools[Random.Range(0, ObjectPools.Length)].Get();
+        PlatformController controller = ObjectPools[Random.Range(0, ObjectPools.Length)].Get();
 
         // If there are no objects left in the pool, return false
-        if (go == null)
+        if (controller == null)
         {
             return false;
         }
-
-        PlatformController controller = go.GetComponent<PlatformController>();
 
         // Reset the platform
         controller.ResetPlatform();

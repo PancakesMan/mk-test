@@ -1564,8 +1564,8 @@ MonoBehaviour:
   VerticalRandomFactorMin: -4
   SpawnVerticalMax: 3
   SpawnVerticalMin: -4
-  SpawnDelayMax: 0
-  SpawnDelayMin: 0
+  SpawnDelay: 1
+  SpawnOrigin: {fileID: 1657439673}
 --- !u!1 &1040190361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,6 +2941,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6886087868521634261, guid: ab9527dbd1c49e34495d238decebf566,
     type: 3}
   m_PrefabInstance: {fileID: 2003657878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1657439673 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 485354824437942163, guid: 24a590f03c390dd408d310c4f9e47cbe,
+    type: 3}
+  m_PrefabInstance: {fileID: 485354824383721239}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1697099538
 GameObject:
